@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer
+spec:
+  replicas: 1 # KEDA will manipulate this
+  selector:
+    matchLabels:
+      app: consumer
+  template:
+    metadata:
+      labels:
+        app: consumer
+    spec:
+      containers:
+      - name: consumer
+        image: my-consumer:latest # Placeholder image name
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: QUEUE_NAME
+          value: "task_queue"
+        - name: PROCESSING_TIME
+          value: "2.0" # Slow processing for easier scaling demo
