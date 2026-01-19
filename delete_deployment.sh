@@ -2,7 +2,7 @@
 set -e
 
 echo "Deleting deployments and services..."
-kubectl delete -f k8s/
+kubectl delete -f k8s/ || true
 
 echo "Deleting KEDA CRDs and resources..."
 kubectl delete -f https://github.com/kedacore/keda/releases/download/v2.10.0/keda-2.10.0.yaml --ignore-not-found
