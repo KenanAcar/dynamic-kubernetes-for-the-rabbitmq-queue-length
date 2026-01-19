@@ -30,7 +30,7 @@ kubectl apply -f k8s/rabbitmq.yaml
 echo "Waiting for RabbitMQ to be ready..."
 kubectl wait --for=condition=available --timeout=120s deployment/rabbitmq
 
-kubectl apply -f k8s/producer.yaml
+# kubectl apply -f k8s/producer.yaml # Disabled to allow manual simulation
 kubectl apply -f k8s/consumer.yaml
 kubectl apply -f k8s/keda-scaledobject.yaml
 
